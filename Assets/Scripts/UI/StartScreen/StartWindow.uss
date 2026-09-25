@@ -1,0 +1,84 @@
+.custom-label {
+    font-size: 20px;
+    -unity-font-style: bold;
+    color: rgb(68, 138, 255);
+}
+
+.start-button {
+    font-size: 96px;
+    background-color: rgb(157, 172, 149);
+    color: #662020;
+
+    padding: 40px;
+
+    border-width: 4px;
+    border-color: #FFC240;
+    border-radius: 32px;
+}
+
+.start-button:hover {
+    background-color: #bfccb9;
+}
+
+/* ===== Slider root ===== */
+/* .unity-slider {
+    margin: 8px 0;
+    min-height: 20px;
+    flex-grow: 1;
+} */
+
+.slider-label {
+    color: #662020;
+    font-size: 48px;
+
+    padding-top: 0px;
+    padding-right: 2px;
+    padding-bottom: 0px;
+    padding-left: 2px;
+
+    margin-top: 2px;
+    margin-right: 2px;
+    margin-bottom: 2px;
+    margin-left: 2px;
+
+    text-border-width: 4px;
+    border-color: #FFC240;
+    border-radius: 32px;
+}
+
+/* ===== Track (the groove) ===== */
+.unity-base-slider__tracker {
+    height: 38px;
+    background-color: #7E9174;
+
+    border-width: 4px;
+    border-color: #FFC240;
+    border-radius: 19px;
+
+    align-self: center;
+    justify-content: center;
+    
+}
+
+/* ===== Dragger (the handle) ===== */
+.unity-base-slider__dragger {
+    width: 64px;
+    height: 64px;
+    background-color: #7E9174;
+
+    border-width: 4px;
+    border-color: #FFC240;
+    border-radius: 32px;
+
+    transition-property: background-color, scale;
+    transition-duration: 0.1s;
+}
+
+.unity-base-slider__dragger:hover {
+    background-color: #bfccb9;
+    scale: 1.1 1.1;
+}
+
+.unity-base-slider__dragger:active {
+    scale: 0.95 0.95;
+}
