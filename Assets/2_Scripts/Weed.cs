@@ -4,20 +4,23 @@ using UnityEngine;
 public class Weed : MonoBehaviour
 {
     [SerializeField] private Transform visualTransform;
-    [SerializeField] private SpriteMask pullMask;
+    [SerializeField] private GameObject root;
     [SerializeField] private Rigidbody2D rb; 
 
     [Header("Настройки")]
     [SerializeField] private float pullDistanceThreshold = 2.0f; 
     [SerializeField] private float maxVisualLift = 0.6f;
+    [SerializeField] private float followSpeed = 0.5f;
+    [SerializeField] private float pluckPower = 2f;
 
     private Vector3 initialVisualPos;
     private Vector3 initialVisualScale;
     private Vector3 startMousePos;
     private WeedTaker currentHand;
-
+    private Vector3 handOffset;
     private float personalToughness;
     private bool isGrabbed;
+    private bool needFollowHand = false;
     public bool IsPlucked { get; private set; }
 
     private void Awake()
@@ -26,7 +29,7 @@ public class Weed : MonoBehaviour
         initialVisualScale = visualTransform.localScale;
         personalToughness = Random.Range(0.85f, 1.3f);
 
-        if (pullMask != null) pullMask.enabled = false;
+        root.SetActive(false);
         if (rb != null) rb.bodyType = RigidbodyType2D.Static;
     }
 
@@ -40,12 +43,20 @@ public class Weed : MonoBehaviour
         currentHand = hand;
 
         visualTransform.DOKill();
-        if (pullMask != null) pullMask.enabled = true;
+        root.SetActive(false);
     }
 
     // 2. Куст сам считает прогресс по координатам руки
     public void OnMouseUpdate(Vector3 currentMousePos)
     {
+        if (needFollowHand)
+        {
+            Vector2 randomOffset = Random.insideUnitCircle * (currentHand.grabRadius * 2f);
+            Vector3 targetPos = currentMousePos + handOffset;
+            transform.position = Vector3.Lerp(transform.position, targetPos, followSpeed * Time.deltaTime);
+            return;
+        }
+
         if (!isGrabbed || IsPlucked) return;
 
         float deltaY = Mathf.Max(0, currentMousePos.y - startMousePos.y);
@@ -69,23 +80,19 @@ public class Weed : MonoBehaviour
         }
     }
 
-    // 3. Срыв: отключаем маску, отстреливаем и примагничиваемся к руке
     private void RipAndAttachToHand()
     {
         IsPlucked = true;
         visualTransform.DOKill();
-        if (pullMask != null) pullMask.enabled = false;
-
-        // Отцепляем визуал от корней и цепляем к руке со случайным сдвигом по радиусу
-        visualTransform.SetParent(currentHand.transform);
-
-        Vector2 randomOffset = Random.insideUnitCircle * (currentHand.grabRadius * 0.7f);
-        Vector3 targetLocalPos = new Vector3(randomOffset.x, randomOffset.y, 0f);
-
+        root.SetActive(true);
+        //visualTransform.SetParent(currentHand.transform);
+        needFollowHand = true;
+        Vector2 randomOffset = Random.insideUnitCircle * (currentHand.grabRadius * 2f);
+        handOffset = new Vector3(randomOffset.x, randomOffset.y, 0f);
+        Vector3 popUpOffset = initialVisualPos + new Vector3(Random.Range(-pluckPower, pluckPower), 0.6f, 0f);
         Sequence snapSeq = DOTween.Sequence();
-        // Взрывной отскок и притягивание к руке
         snapSeq.Append(visualTransform.DOScale(initialVisualScale * 1.15f, 0.1f));
-        snapSeq.Append(visualTransform.DOLocalMove(targetLocalPos, 0.2f).SetEase(Ease.OutBack));
+        snapSeq.Append(visualTransform.DOLocalMove(popUpOffset, 0.2f).SetEase(Ease.OutBack));
         snapSeq.Join(visualTransform.DOScale(initialVisualScale, 0.2f));
         snapSeq.Join(visualTransform.DORotate(new Vector3(0, 0, Random.Range(-30f, 30f)), 0.2f));
     }
@@ -95,7 +102,7 @@ public class Weed : MonoBehaviour
     {
         isGrabbed = false;
         visualTransform.DOKill();
-
+        needFollowHand = false;
         if (!IsPlucked)
         {
             // Не сорвали — пружинит обратно в землю
@@ -104,7 +111,7 @@ public class Weed : MonoBehaviour
             bounceBack.Join(visualTransform.DOScale(initialVisualScale, 0.25f).SetEase(Ease.OutBounce));
             bounceBack.OnComplete(() =>
             {
-                if (pullMask != null) pullMask.enabled = false;
+                root.SetActive(false);
             });
         }
         else
@@ -115,7 +122,7 @@ public class Weed : MonoBehaviour
             if (rb != null)
             {
                 rb.transform.position = visualTransform.position;
-                rb.simulated = true;
+                rb.bodyType = RigidbodyType2D.Dynamic;
                 rb.linearVelocity = new Vector2(Random.Range(-1.5f, 1.5f), Random.Range(1f, 3f)); // Легкий подброс
                 rb.angularVelocity = Random.Range(-180f, 180f);
             }
