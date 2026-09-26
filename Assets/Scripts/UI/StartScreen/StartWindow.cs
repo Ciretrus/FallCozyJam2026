@@ -2,29 +2,47 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-public class StartWindow : EditorWindow
+namespace UI.StartScene {
+
+public class StartWindow : MonoBehaviour
 {
-    [SerializeField]
-    private VisualTreeAsset m_VisualTreeAsset = default;
+    [SerializeField] private UIDocument _uiDocument;
 
-    [MenuItem("Window/UI Toolkit/StartWindow")]
-    public static void ShowExample()
+    private void OnEnable()
     {
-        StartWindow wnd = GetWindow<StartWindow>();
-        wnd.titleContent = new GUIContent("StartWindow");
+        VisualElement root = _uiDocument.rootVisualElement;
+
+        // set clicks
+        var playBtn = root.Q<Button>("Play");
+        if (playBtn != null)
+        {
+            playBtn.clicked += OnStartClicked; 
+        } else
+        {
+            Debug.LogError("Button 'Play' not found.");
+        }
+
+        // sliders
+        var soundSlider = root.Q<SliderInt>("Sound");
+        var musicSlider = root.Q<SliderInt>("Music");
+        soundSlider?.RegisterValueChangedCallback(OnSoundChanged);
+        musicSlider?.RegisterValueChangedCallback(OnMusicChanged);
     }
 
-    public void CreateGUI()
+    private void OnStartClicked()
     {
-        // Each editor window contains a root VisualElement object
-        VisualElement root = rootVisualElement;
-
-        // VisualElements objects can contain other VisualElement following a tree hierarchy.
-        VisualElement label = new Label("Hello World! From C#");
-        root.Add(label);
-
-        // Instantiate UXML
-        VisualElement labelFromUXML = m_VisualTreeAsset.Instantiate();
-        root.Add(labelFromUXML);
+        //Debug.Log("STARTED");
     }
+
+    private void OnSoundChanged(ChangeEvent<int> evt)
+    {
+        //Debug.Log($"Sound: {evt.newValue}");
+    }
+
+    private void OnMusicChanged(ChangeEvent<int> evt)
+    {
+        //Debug.Log($"Music: {evt.newValue}");
+    }
+}
+
 }

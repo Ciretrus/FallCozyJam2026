@@ -1,21 +1,21 @@
 <ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <Style src="project://database/Assets/Scripts/UI/StartScreen/StartWindow.uss?fileID=7433441132597879392&amp;guid=a49c60e79d76c9c4597540fbe2d87a69&amp;type=3#StartWindow" />
-    <ui:VisualElement name="Body" style="flex-grow: 1;">
-        <ui:VisualElement name="Content" style="flex-grow: 1; top: 13.5%; bottom: 223px; position: absolute; left: 0%; right: 0%;">
-            <ui:Label text="The Name of the Game" name="Title" style="color: rgb(102, 32, 32); -unity-text-align: upper-center; font-size: 128px; -unity-text-outline-width: 5px; -unity-text-outline-color: rgb(255, 194, 64); text-shadow: 0 0 0 rgb(255, 194, 64);" />
-            <ui:VisualElement name="buttons" style="flex-grow: 1; justify-content: space-between; top: 242px; position: absolute; left: 40%; right: 40%; bottom: 0%;">
-                <ui:Button text="Play" name="Play" class="start-button" style="padding-bottom: 40px; height: 160px; width: 376px;" />
+    <ui:VisualElement name="Body" style="flex-grow: 1; background-color: rgb(250, 203, 133); color: rgb(250, 203, 133);">
+        <ui:VisualElement name="Content" style="flex-grow: 1; top: 116px; bottom: 113px; position: absolute; left: 0%; right: 0%; -unity-background-image-tint-color: rgba(255, 255, 255, 0);">
+            <ui:VisualElement name="buttons" style="flex-grow: 1; justify-content: space-between; top: 350px; position: absolute; left: 40%; right: 40%; bottom: 0%;">
+                <ui:Button text="PLAY" name="Play" class="start-button" style="padding-bottom: 40px; height: 140px; width: 376px; font-size: 84px; background-size: 100% 151px;" />
                 <ui:VisualElement name="sliders" style="flex-grow: 1;">
-                    <ui:VisualElement name="SoundContent" style="flex-grow: 1; margin-top: 30px;">
+                    <ui:VisualElement name="SoundContent" style="flex-grow: 1; margin-top: 30px; flex-direction: column;">
                         <ui:Label text="Sound" name="SoundLabel" class="slider-label" style="-unity-text-align: upper-center;" />
-                        <ui:SliderInt value="42" high-value="100" name="Sound" />
+                        <ui:SliderInt value="42" high-value="100" name="Sound" fill="true" style="flex-direction: column-reverse; -unity-text-align: middle-left;" />
                     </ui:VisualElement>
                     <ui:VisualElement name="MusicContent" style="flex-grow: 1;">
                         <ui:Label text="Music" name="MusicLabel" class="slider-label" style="-unity-text-align: upper-center;" />
-                        <ui:SliderInt value="42" high-value="100" name="Music" />
+                        <ui:SliderInt value="42" high-value="100" name="Music" fill="true" />
                     </ui:VisualElement>
                 </ui:VisualElement>
             </ui:VisualElement>
+            <ui:Label text="CareFree Weeding" name="Title" style="color: rgb(144, 93, 65); -unity-text-align: middle-center; font-size: 128px; -unity-text-outline-width: 0; -unity-text-outline-color: rgba(255, 194, 64, 0); text-shadow: 0 0 0 rgb(255, 194, 64); -unity-font-definition: resource(&apos;Fonts/BryndanWrite&apos;); text-overflow: ellipsis; height: 280px; width: 595px; white-space: pre-wrap; align-self: center;" />
         </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>

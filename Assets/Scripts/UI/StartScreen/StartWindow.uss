@@ -1,3 +1,8 @@
+:root {
+    -unity-font-definition: url("project://database/Assets/Resources/Fonts/ComicRelief.ttf");
+    color: #905D41;
+}
+
 .custom-label {
     font-size: 20px;
     -unity-font-style: bold;
@@ -5,19 +10,26 @@
 }
 
 .start-button {
-    font-size: 96px;
-    background-color: rgb(157, 172, 149);
-    color: #662020;
-
+    font-size: 84px;
+    background-color: transparent;
+    color: #905D41;
     padding: 40px;
 
-    border-width: 4px;
-    border-color: #FFC240;
-    border-radius: 32px;
+    height: 151px;
+
+    border-width: 7px;
+    border-color: #905D41;
+    border-radius: 20px;
 }
 
 .start-button:hover {
-    background-color: #bfccb9;
+    background-color: #ffdda9;
+    scale: 1.05 1.05;
+}
+
+.start-button:active {
+    background-color: #cfaa8c;
+    scale: 0.95 0.95;
 }
 
 /* ===== Slider root ===== */
@@ -41,44 +53,52 @@
     margin-bottom: 2px;
     margin-left: 2px;
 
-    text-border-width: 4px;
-    border-color: #FFC240;
-    border-radius: 32px;
 }
 
 /* ===== Track (the groove) ===== */
 .unity-base-slider__tracker {
-    height: 38px;
-    background-color: #7E9174;
+    height: 14px;
+    background-color: #BC8E74;
 
-    border-width: 4px;
-    border-color: #FFC240;
-    border-radius: 19px;
+    border-width: 0;
+    border-color: #BC8E74;
+    border-radius: 7px;
 
     align-self: center;
     justify-content: center;
-    
 }
 
 /* ===== Dragger (the handle) ===== */
 .unity-base-slider__dragger {
-    width: 64px;
-    height: 64px;
-    background-color: #7E9174;
+    width: 28px;
+    height: 28px;
+    background-color: #905D41;
 
-    border-width: 4px;
-    border-color: #FFC240;
-    border-radius: 32px;
+    border-width: 0;
+    border-color: #905D41;
+    border-radius: 14px;
 
     transition-property: background-color, scale;
     transition-duration: 0.1s;
 }
 
 .unity-base-slider__dragger:hover {
-    background-color: #bfccb9;
     scale: 1.1 1.1;
 }
 
 .unity-base-slider__dragger:active {
-    scale: 0.95 0.95;
+    scale: 0.9 0.9;
+}
+
+/* ===== Fill ===== */
+.unity-base-slider__fill {
+    height: 14px;
+    background-color: #905D41;
+
+    border-width: 0;
+    border-color: #905D41;
+    border-radius: 7px;
+
+    align-self: center;
+    justify-content: center;
 }
