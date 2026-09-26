@@ -13,6 +13,7 @@ public class Weed : MonoBehaviour
     [SerializeField] private float followSpeed = 0.5f;
     [SerializeField] private float pluckPower = 2f;
 
+    private Collider2D collider;
     private Vector3 initialVisualPos;
     private Vector3 initialVisualScale;
     private Vector3 startMousePos;
@@ -31,6 +32,8 @@ public class Weed : MonoBehaviour
 
         root.SetActive(false);
         if (rb != null) rb.bodyType = RigidbodyType2D.Static;
+        collider = GetComponent<Collider2D>();
+
     }
 
     // 1. Рука передает старт и себя
@@ -87,7 +90,7 @@ public class Weed : MonoBehaviour
         root.SetActive(true);
         //visualTransform.SetParent(currentHand.transform);
         needFollowHand = true;
-        Vector2 randomOffset = Random.insideUnitCircle * (currentHand.grabRadius * 2f);
+        Vector2 randomOffset = Random.insideUnitCircle * (currentHand.grabRadius);
         handOffset = new Vector3(randomOffset.x, randomOffset.y, 0f);
         Vector3 popUpOffset = initialVisualPos + new Vector3(Random.Range(-pluckPower, pluckPower), 0.6f, 0f);
         Sequence snapSeq = DOTween.Sequence();
@@ -116,7 +119,7 @@ public class Weed : MonoBehaviour
         }
         else
         {
-            // Сорванный пучок — отцепляем от руки, включаем 2D-физику, он летит вниз
+            collider.isTrigger = true;
             visualTransform.SetParent(null);
 
             if (rb != null)
