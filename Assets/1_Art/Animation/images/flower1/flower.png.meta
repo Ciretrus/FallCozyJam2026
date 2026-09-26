@@ -1,16 +1,10 @@
 fileFormatVersion: 2
-guid: ee24884ee5ea33147b3ee7aeff311cde
+guid: 8de86a83bce23f741a7b96ec0440ab1e
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -2458773170393489024
-    second: roots_0
-  - first:
-      213: 3283588954669436210
-    second: roots_1
-  - first:
-      213: -3216951509253232086
-    second: roots_2
+      213: 7366617892383084551
+    second: flower_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -52,12 +46,12 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 600
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -132,13 +126,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: roots_0
+      name: flower_0
       rect:
         serializedVersion: 2
-        x: 13
-        y: 102
-        width: 145
-        height: 229
+        x: 21
+        y: 22
+        width: 551
+        height: 967
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -147,52 +141,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 0816f6324dea0edd0800000000000000
-      internalID: -2458773170393489024
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: roots_1
-      rect:
-        serializedVersion: 2
-        x: 147
-        y: 18
-        width: 252
-        height: 334
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 23dc77fc1c6a19d20800000000000000
-      internalID: 3283588954669436210
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: roots_2
-      rect:
-        serializedVersion: 2
-        x: 317
-        y: 218
-        width: 97
-        height: 111
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: a2aed4f75a71b53d0800000000000000
-      internalID: -3216951509253232086
+      spriteID: 700d78f61fb7b3660800000000000000
+      internalID: 7366617892383084551
       vertices: []
       indices: 
       edges: []
@@ -201,7 +151,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -211,9 +161,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      roots_0: -2458773170393489024
-      roots_1: 3283588954669436210
-      roots_2: -3216951509253232086
+      flower_0: 7366617892383084551
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
