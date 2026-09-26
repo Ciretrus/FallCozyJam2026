@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CameraMovaController : MonoBehaviour
+public class CameraMoveController : MonoBehaviour
 {
     [SerializeField]
     private CameraDrag CameraDrag;
