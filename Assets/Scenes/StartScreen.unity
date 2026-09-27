@@ -412,7 +412,7 @@ GameObject:
   - component: {fileID: 1880728234}
   - component: {fileID: 1880728235}
   m_Layer: 0
-  m_Name: StartMenu
+  m_Name: StartWindowDocument
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

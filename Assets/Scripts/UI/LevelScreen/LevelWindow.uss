@@ -1,0 +1,144 @@
+:root {
+    -unity-font-definition: url("project://database/Assets/Resources/Fonts/ComicRelief.ttf?fileID=12800000&guid=e881955f787a1974cbe2054eaec850ec&type=3#ComicRelief");
+    color: rgb(144, 93, 65);
+}
+
+.exit-button {
+    width: 162px;
+    height: 95px;
+    background-color: rgb(255, 241, 219);
+    color: rgb(144, 93, 65);
+    border-width: 3px;
+    border-color: rgb(144, 93, 65);
+    border-radius: 5px;
+}
+
+.exit-image {
+    width: 56px;
+    height: 49px;
+    -unity-background-scale-mode: scale-to-fit;
+}
+
+.completed-text {
+    color: rgb(200, 179, 168);
+}
+
+.exit-button:hover {
+    background-color: rgb(255, 221, 169);
+    scale: 1.05 1.05;
+}
+
+.exit-button:active {
+    background-color: rgb(207, 170, 140);
+    scale: 0.95 0.95;
+}
+
+.buy-window {
+    background-color: rgb(253, 0, 186);
+}
+
+.unity-scroller--vertical {
+    width: 12px;
+    border-radius: 6px;
+    margin: 4px;
+}
+
+.unity-scroller--vertical .unity-base-slider__tracker {
+    background-color: rgb(144, 93, 65);
+    border-radius: 10px;
+    padding: 6px;
+    border-width: 1px;
+    border-color: rgb(144, 93, 65);
+}
+
+.unity-scroller--vertical .unity-base-slider__dragger {
+    background-color: rgb(255, 241, 219);
+    min-height: 30px;
+    transition-property: background-color, scale;
+    transition-duration: 0.1s;
+    border-width: 2px;
+    border-color: rgb(144, 93, 65);
+    border-radius: 9px;
+}
+
+.unity-scroller--vertical .unity-base-slider__dragger:hover {
+}
+
+.unity-scroller--vertical .unity-base-slider__dragger:active {
+}
+
+.unity-scroller--vertical #unity-low-button {
+    max-width: 0;
+    max-height: 0;
+    min-width: 0;
+    min-height: 0;
+    padding: 0;
+}
+
+.unity-scroller--vertical #unity-high-button {
+    max-width: 0;
+    max-height: 0;
+    min-width: 0;
+    min-height: 0;
+    padding: 0;
+}
+
+
+.unity-scroller--horizontal {
+    height: 12px;
+    width: 450px;
+    border-radius: 6px;
+    margin-bottom: 10px;
+    margin-top: 5px;
+}
+
+.unity-scroller--horizontal .unity-base-slider__tracker {
+    background-color: rgba(255, 241, 219, 0);
+    border-radius: 7px;
+    border-width: 1px;
+    height: 12px;
+    width: 424px;
+    border-color: rgb(255, 241, 219);
+
+    align-self: center;
+}
+
+.unity-scroller--horizontal .unity-base-slider__dragger {
+    background-color: rgb(144, 93, 65);
+    height: 12px;
+
+    transition-property: background-color, scale;
+    transition-duration: 0.1s;
+
+    border-width: 2px;
+    border-color: rgb(144, 93, 65);
+    border-radius: 5px;
+}
+
+.unity-scroller--horizontal #unity-low-button {
+    /* display:none; */
+    height: 12px;
+    width: 12px;
+    border-radius: 6px;
+    border-width: 2px;
+    background-color: rgb(144, 93, 65);
+    border-color: rgb(144, 93, 65);
+
+    background-image: none;
+
+    align-self: center;
+}
+
+.unity-scroller--horizontal #unity-high-button {
+    /* display:none; */
+    height: 12px;
+    width: 12px;
+    border-radius: 6px;
+    border-width: 2px;
+    background-color: rgb(144, 93, 65);
+    border-color: rgb(144, 93, 65);
+
+    background-image: none;
+
+    align-self: center;
+} 

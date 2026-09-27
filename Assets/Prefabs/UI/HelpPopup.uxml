@@ -1,0 +1,13 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:VisualElement name="HelpPopup" style="flex-grow: 1; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background-color: rgba(255, 224, 194, 0.44);">
+        <ui:VisualElement name="HelpPopup1" focusable="true" template="HelpPopup" enabled="true" style="align-self: center; justify-content: flex-end; align-items: center; align-content: flex-start; position: absolute; top: 50%; background-color: rgba(0, 0, 0, 0.36); background-image: none;">
+            <ui:VisualElement name="HelpPopup" enabled="true" style="flex-grow: 1; position: absolute; top: 0; left: 1px; right: 0; bottom: 1px; align-self: auto; justify-content: space-around; background-color: rgba(132, 85, 60, 0.08);">
+                <ui:VisualElement name="HelpPopupWindow" style="flex-grow: 1; background-color: rgb(255, 241, 219); border-left-color: rgb(144, 93, 65); border-right-color: rgb(144, 93, 65); border-top-color: rgb(144, 93, 65); border-bottom-color: rgb(144, 93, 65); border-top-width: 2px; border-right-width: 2px; border-bottom-width: 2px; border-left-width: 2px; border-top-left-radius: 2px; border-top-right-radius: 2px; border-bottom-right-radius: 2px; border-bottom-left-radius: 2px; max-width: 846px; max-height: 577px; align-self: center; justify-content: space-between; align-items: center; min-height: 400px; min-width: 600px; flex-direction: column-reverse; align-content: flex-end;">
+                    <ui:Button text="x" name="CloseHelp" style="color: rgb(255, 241, 219); background-color: rgb(132, 85, 60); margin-top: 10px; margin-right: 10px; margin-bottom: 10px; margin-left: 10px; padding-top: 3px; padding-right: 10px; padding-bottom: 7px; padding-left: 10px; flex-direction: row-reverse; position: absolute; right: 0; top: 0;" />
+                    <ui:Label text="Instructions" name="Label" style="position: absolute; top: 0%; right: auto; align-self: center; justify-content: center; font-size: 36px; left: 0; margin-top: 40px; margin-left: 40px; margin-right: 40px; width: 512px; height: 286px;" />
+                    <ui:VisualElement name="VisualElement" style="flex-grow: 1; width: 314px; height: 182px; min-width: 314px; max-width: 314px; min-height: 182px; max-height: 182px; margin-bottom: 40px; background-image: resource(&apos;UI/help&apos;); -unity-background-scale-mode: scale-to-fit; background-position-y: center; background-position-x: center; align-self: center;" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>
