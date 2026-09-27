@@ -29,6 +29,9 @@ public class ItemManager : MonoBehaviour
         }
         item.Activate();
         SetActiveItem(itemID);
+
+        if (SoundManager.Instance != null)
+            SoundManager.Instance.PlayUIButton();
     }
 
     public List<Item> GetItemList()

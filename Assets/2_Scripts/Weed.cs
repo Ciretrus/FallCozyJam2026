@@ -112,6 +112,9 @@ public class Weed : MonoBehaviour
         snapSeq.Join(visualTransform.DOScale(initialVisualScale, 0.2f));
         snapSeq.Join(visualTransform.DORotate(new Vector3(0, 0, Random.Range(-30f, 30f)), 0.2f));
 
+        if (SoundManager.Instance != null)
+            SoundManager.Instance.PlayPullingSound(transform.position);
+
         OnPlucked?.Invoke(this);
     }
 

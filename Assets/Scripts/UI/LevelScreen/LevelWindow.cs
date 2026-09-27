@@ -90,6 +90,24 @@ namespace UI.LevelScene
 
             UpdateTaskList("");
             UpdateShopList("");
+
+            if (_helpBtn != null)
+            {
+                _helpBtn.clicked += ShowHelp;
+                _helpBtn.clicked += () => SoundManager.Instance?.PlayUIButton();
+            }
+
+            if (_closeHelpBtn != null)
+            {
+                _closeHelpBtn.clicked += HideHelp;
+                _closeHelpBtn.clicked += () => SoundManager.Instance?.PlayUIButton();
+            }
+
+            if (_exitBtn != null)
+            {
+                _exitBtn.clicked += ExitToStartScreen;
+                _exitBtn.clicked += () => SoundManager.Instance?.PlayUIButton();
+            }
         }
 
         private void OnDisable()

@@ -44,6 +44,9 @@ public class FlowerGrow : MonoBehaviour
             isGrowing = false;
             isFullyGrown = true;
             PlayBloomPopEffect();
+
+            if (SoundManager.Instance != null)
+                SoundManager.Instance.PlayPlantSound(transform.position);
         }
     }
 

@@ -22,6 +22,9 @@ public class FlowerWater : MonoBehaviour
     {
         int count = Physics2D.OverlapCircleNonAlloc(transform.position, waterRadius, hitColliders, flowerLayer);
 
+        if (SoundManager.Instance != null)
+            SoundManager.Instance.PlayWaterSound(transform.position);
+
         for (int i = 0; i < count; i++)
         {
             if (hitColliders[i].TryGetComponent<FlowerGrow>(out var flowerGrow))

@@ -119,6 +119,99 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &257137805
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 257137807}
+  - component: {fileID: 257137808}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &257137807
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 257137805}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -14.7778, y: 4.8011, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &257137808
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 257137805}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab019a200366cf94c9097dfb5229df74, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SoundManager
+  ambienceEvent:
+    Guid:
+      Data1: -324604563
+      Data2: 1272783509
+      Data3: 1091016357
+      Data4: -969259520
+    Path: event:/SFX/Ambience/Ambience
+  plantEvent:
+    Guid:
+      Data1: 163986561
+      Data2: 1089022480
+      Data3: -2021048686
+      Data4: 1525507696
+    Path: event:/SFX/Gameplay Sound/Plant
+  pullingEvent:
+    Guid:
+      Data1: -1834171894
+      Data2: 1164699710
+      Data3: 840380581
+      Data4: -1797978200
+    Path: event:/SFX/Gameplay Sound/Pulling
+  waterEvent:
+    Guid:
+      Data1: 1305541955
+      Data2: 1262317447
+      Data3: 1896265635
+      Data4: 553181646
+    Path: event:/SFX/Gameplay Sound/Water
+  uiLooseEvent:
+    Guid:
+      Data1: -1654913783
+      Data2: 1306487938
+      Data3: -1774961509
+      Data4: -455215174
+    Path: event:/SFX/UI/Loose
+  uiButtonEvent:
+    Guid:
+      Data1: 1710303568
+      Data2: 1294699447
+      Data3: -813872496
+      Data4: 1984448374
+    Path: event:/SFX/UI/UI Button
+  victoryEvent:
+    Guid:
+      Data1: -981018859
+      Data2: 1273649623
+      Data3: 1557295514
+      Data4: -449947687
+    Path: event:/SFX/UI/Victory
 --- !u!1001 &266319213
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -199,19 +292,53 @@ PrefabInstance:
       propertyPath: CameraZoom.maxSize
       value: 50
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8426687628625897830, guid: e6e327f0802fdb34790d3d9a34aa9a2a, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 3699006729745716277, guid: e6e327f0802fdb34790d3d9a34aa9a2a, type: 3}
       insertIndex: -1
       addedObject: {fileID: 944841166}
+    - targetCorrespondingSourceObject: {fileID: 3699006729745716277, guid: e6e327f0802fdb34790d3d9a34aa9a2a, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 944841170}
   m_SourcePrefab: {fileID: 100100000, guid: e6e327f0802fdb34790d3d9a34aa9a2a, type: 3}
 --- !u!20 &266319214 stripped
 Camera:
   m_CorrespondingSourceObject: {fileID: 7704810985577675217, guid: e6e327f0802fdb34790d3d9a34aa9a2a, type: 3}
   m_PrefabInstance: {fileID: 266319213}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &488723411 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3123133721716586135, guid: 2b5b70103e3f37444b44e1fd03938cbb, type: 3}
+  m_PrefabInstance: {fileID: 1376020623}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &488723412 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8675512659118890009, guid: 2b5b70103e3f37444b44e1fd03938cbb, type: 3}
+  m_PrefabInstance: {fileID: 1376020623}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 488723411}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f487a733a2550734da7fb1ffd2944fe8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ItemManager
+--- !u!114 &488723414
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 488723411}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d5170ff515d55041b35650514082604, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EconomyManager
+  weedCollector: {fileID: 2022353534}
+  itemManager: {fileID: 488723412}
 --- !u!1 &619394800
 GameObject:
   m_ObjectHideFlags: 0
@@ -267,7 +394,7 @@ PrefabInstance:
     - target: {fileID: 5275520240833583940, guid: 813d2bda4a1b94f42843b4b13ff58073, type: 3}
       propertyPath: _itemManager
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 488723412}
     - target: {fileID: 6089156724057095896, guid: 813d2bda4a1b94f42843b4b13ff58073, type: 3}
       propertyPath: m_LocalPosition.x
       value: 5.82152
@@ -370,6 +497,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a79441f348de89743a2939f4d699eac1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Unity.RenderPipelines.Universal.Runtime::UnityEngine.Rendering.Universal.UniversalAdditionalCameraData
+--- !u!114 &944841170
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 944841162}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86c6556701af9e04380698b89f691b6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: FMODUnity::FMODUnity.StudioListener
+  nonRigidbodyVelocity: 0
+  attenuationObject: {fileID: 0}
 --- !u!1 &986680056
 GameObject:
   m_ObjectHideFlags: 0
@@ -515,7 +656,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3123133721716586135, guid: 2b5b70103e3f37444b44e1fd03938cbb, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 488723414}
   m_SourcePrefab: {fileID: 100100000, guid: 2b5b70103e3f37444b44e1fd03938cbb, type: 3}
 --- !u!1 &1496655942
 GameObject:
@@ -703,6 +847,7 @@ MonoBehaviour:
   weedLayer:
     serializedVersion: 2
     m_Bits: 128
+  cursor: {fileID: 0}
 --- !u!212 &1787002742
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1221,3 +1366,4 @@ SceneRoots:
   - {fileID: 2022353535}
   - {fileID: 1496655943}
   - {fileID: 1376020623}
+  - {fileID: 257137807}

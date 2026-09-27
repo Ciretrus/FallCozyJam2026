@@ -41,6 +41,9 @@ public class WeedTaker : MonoBehaviour
                 {
                     weed.InitGrab(startGrabPos, this);
                     activeWeeds.Add(weed);
+
+                    if (SoundManager.Instance != null)
+                        SoundManager.Instance.PlayPullingSound(weed.transform.position);
                 }
             }
         }
