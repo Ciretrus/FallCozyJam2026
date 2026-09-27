@@ -30,28 +30,24 @@ public class FlowerGrow : MonoBehaviour
         visualTransform.localScale = Vector3.zero;
     }
 
-    private void Update()
-    {
-        if (!isGrowing || isFullyGrown) return;
-
-        currentProgress += Time.deltaTime / growDuration;
-        float progressClamped = Mathf.Clamp01(currentProgress);
-
-        visualTransform.localScale = Vector3.Lerp(Vector3.zero, initialScale, progressClamped);
-
-        if (progressClamped >= 1f)
-        {
-            isGrowing = false;
-            isFullyGrown = true;
-            PlayBloomPopEffect();
-        }
-    }
-
     public void StartGrowing()
     {
-        if (isFullyGrown || isGrowing) return;
-        isGrowing = true;
+        if (isFullyGrown) return;
+        if (currentProgress*growDuration >= growDuration*0.95)
+        {
+            Debug.Log(currentProgress);
+            isFullyGrown = true;
+            PlayBloomPopEffect();
+            return;
+        }
+        
+            currentProgress += Time.deltaTime;
+            currentProgress = Mathf.Clamp01(currentProgress);
+            //Debug.Log(currentProgress);
+            visualTransform.localScale = Vector3.Lerp(Vector3.zero, initialScale, currentProgress);
+
     }
+
 
     private void PlayBloomPopEffect()
     {
