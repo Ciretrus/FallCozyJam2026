@@ -11,12 +11,19 @@ namespace UI.LevelScene
         [SerializeField] private UIDocument _uiDocument;
         public ItemManager _itemManager;
 
+        private class ShopItemData
+        {
+            public string Id;
+            public int Price;
+            public Sprite Icon;
+        }
         private class TaskData
         {
             public string Text;
             public bool Completed;
         }
 
+        // link to counter
         private Label _scoreText;
 
         [SerializeField] private VisualTreeAsset _shopItemTemplate;
@@ -30,6 +37,7 @@ namespace UI.LevelScene
         private VisualElement _helpPopup;
         private Button _helpBtn;
         private Button _closeHelpBtn;
+
         private Button _exitBtn;
 
         [SerializeField] private SpriteAtlas watercanAtlas;
@@ -38,51 +46,40 @@ namespace UI.LevelScene
         {
             var root = _uiDocument.rootVisualElement;
 
-            _itemManager.InitializeDefaultItems();
-
+            // Score
             _scoreText = root.Q<Label>("ScoreText");
             SetScoreView();
 
-            var saver = _itemManager.GetMoneySaver();
-            if (saver != null)
-                saver.OnMoneyChanged += OnMoneyChanged;
-
+            // Help popup
             _helpPopup = root.Q<VisualElement>("HelpPopup");
             HideHelp();
             _helpBtn = root.Q<Button>("HelpButton");
-            if (_helpBtn != null) _helpBtn.clicked += ShowHelp;
+            if (_helpBtn != null)
+                _helpBtn.clicked += ShowHelp;
             _closeHelpBtn = root.Q<Button>("CloseHelp");
-            if (_closeHelpBtn != null) _closeHelpBtn.clicked += HideHelp;
+            if (_closeHelpBtn != null)
+                _closeHelpBtn.clicked += HideHelp;
 
+            // Exit
             _exitBtn = root.Q<Button>("Help");
-            if (_exitBtn != null) _exitBtn.clicked += ExitToStartScreen;
+            if (_exitBtn != null)
+                _exitBtn.clicked += ExitToStartScreen;
 
+            // Lists
             _shopContent = root.Q<VisualElement>("ShopContent");
             _tasks = root.Q<VisualElement>("TasksTexts");
 
             UpdateTaskList("");
             UpdateShopList("");
         }
-
-        private void OnDisable()
-        {
-            var saver = _itemManager?.GetMoneySaver();
-            if (saver != null)
-                saver.OnMoneyChanged -= OnMoneyChanged;
-
-            if (_helpBtn != null) _helpBtn.clicked -= ShowHelp;
-            if (_closeHelpBtn != null) _closeHelpBtn.clicked -= HideHelp;
-            if (_exitBtn != null) _exitBtn.clicked -= ExitToStartScreen;
-        }
-
-        private void OnMoneyChanged(int newValue)
-        {
-            SetScoreView();
-        }
-
+        // private void OnDisable()
+        // {
+        //     if (_helpBtn != null) _helpBtn.clicked -= ShowHelp;
+        //     if (_closeHelpBtn != null) _closeHelpBtn.clicked -= HideHelp;
+        //     if (_exitBtn != null) _exitBtn.clicked -= ExitToStartScreen;
+        // }
         private void SetScoreView()
         {
-            if (_scoreText == null) return;
             int value = _itemManager.GetBudget();
             _scoreText.text = value.ToString();
         }
@@ -93,13 +90,11 @@ namespace UI.LevelScene
             _helpPopup.style.display = DisplayStyle.Flex;
             _helpPopup.BringToFront();
         }
-
         private void HideHelp()
         {
             if (_helpPopup == null) return;
             _helpPopup.style.display = DisplayStyle.None;
         }
-
         private void ExitToStartScreen()
         {
             SceneTransition.Instance.LoadScene("StartScreen");
@@ -113,22 +108,25 @@ namespace UI.LevelScene
                 new() { Text = "Pull out all the weeds", Completed = false },
                 new() { Text = "Pull out a weed", Completed = false },
                 new() { Text = "Water the flower", Completed = false },
+                new() { Text = "Pull out a weed", Completed = false },
+                new() { Text = "Grow more flowers, you can't water a flower while there are weeds nearby", Completed = false },
                 new() { Text = "Buy a hoe", Completed = false },
+                new() { Text = "Pull it out", Completed = false },
                 new() { Text = "Use the hand trowel", Completed = false },
                 new() { Text = "Use the hoe", Completed = false },
-                new() { Text = "Grow more flowers", Completed = false },
-                new() { Text = "Keep pulling out weeds and watering the flowers", Completed = false },
+                new() { Text = "Keep pulling out weeds and watering the flowers until a picture appears", Completed = false },
             };
             foreach (var data in items)
+            {
                 _tasks.Add(CreateTask(data));
+            }
         }
 
         private void UpdateShopList(string a)
         {
-            if (_shopContent == null) return;
             _shopContent.Clear();
             var items = _itemManager.GetItemList();
-
+            Debug.Log(items.Count);
             for (int i = 0; i < items.Count - 1; ++i)
             {
                 _shopContent.Add(CreateShopItem(items[i], i));
@@ -139,19 +137,29 @@ namespace UI.LevelScene
 
         private VisualElement CreateTask(TaskData data)
         {
-            TemplateContainer item = data.Completed
-                ? _completedtasksTemplate.Instantiate()
-                : _tasksTemplate.Instantiate();
+            TemplateContainer item;
+            if (!data.Completed)
+            {
+                item = _tasksTemplate.Instantiate();
+            }
+            else
+            {
+                item = _completedtasksTemplate.Instantiate();
+            }
 
             var task = item.Q<Label>("TasksText");
-            if (task != null) task.text = data.Text;
+            if (task != null)
+            {
+                task.text = data.Text;
+            }
+
             return item;
         }
 
         private VisualElement CreateShopItem(Item data, int id)
         {
             var item = _shopItemTemplate.Instantiate();
-            item.name = id.ToString();
+            item.name = id.ToString(); // ShopCost
 
             var cost = item.Q<Button>("ShopCost");
             if (cost != null)
@@ -181,20 +189,23 @@ namespace UI.LevelScene
                 }
                 else
                 {
-                    var color = new Color(92f / 255f, 113f / 255f, 84f / 255f) { a = 0.5f };
+                    var color = new Color(92f / 255f, 113f / 255f, 84f / 255f)
+                    {
+                        a = 0.5f
+                    };
                     view.style.backgroundColor = color;
                 }
             }
 
             return item;
         }
-
         private Sprite GetSprite(Item data)
         {
             if (data.GetType() == typeof(WaterCan))
+            {
                 return watercanAtlas.GetSprite(data.Name.Replace(" ", ""));
-
-            return Resources.Load<Sprite>($"UI/Items/{data.Name}");
+            }
+            return Resources.Load<Sprite>($"UI/Items/{name}");
         }
 
         private void BuyView(int itemId)
@@ -204,4 +215,5 @@ namespace UI.LevelScene
             SetScoreView();
         }
     }
+
 }
