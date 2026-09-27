@@ -1,7 +1,5 @@
-using NUnit.Framework;
 using System;
 using UnityEngine;
-using static UnityEngine.GraphicsBuffer;
 
 public class WeedCollector : MonoBehaviour
 {
@@ -33,10 +31,12 @@ public class WeedCollector : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        
         if (((1 << collision.gameObject.layer) & weedLayer) != 0)
         {
+            
             Weed weed = collision.GetComponent<Weed>();
-            if (weed != null && !weed.IsPlucked)
+            if (weed != null && weed.IsPlucked)
             {
                 Destroy(weed.gameObject);
                 OnWeedCollected?.Invoke();
