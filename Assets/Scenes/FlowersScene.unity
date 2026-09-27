@@ -947,14 +947,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Flower1Yellow
       objectReference: {fileID: 0}
-    - target: {fileID: 3137976939029917123, guid: e57bb00e3f05ce7429614106e8401374, type: 3}
-      propertyPath: 'm_Materials.Array.data[0]'
-      value: 
-      objectReference: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
-    - target: {fileID: 3559104689058662225, guid: e57bb00e3f05ce7429614106e8401374, type: 3}
-      propertyPath: 'm_Materials.Array.data[0]'
-      value: 
-      objectReference: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
     - target: {fileID: 6093742428554176095, guid: e57bb00e3f05ce7429614106e8401374, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.048
@@ -1117,14 +1109,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7452869171436949971, guid: c5f91dcf49c428f4882d073b6dfbb474, type: 3}
-      propertyPath: 'm_Materials.Array.data[0]'
-      value: 
-      objectReference: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
-    - target: {fileID: 8715532465432834779, guid: c5f91dcf49c428f4882d073b6dfbb474, type: 3}
-      propertyPath: 'm_Materials.Array.data[0]'
-      value: 
-      objectReference: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
     - target: {fileID: 9060658366768371270, guid: c5f91dcf49c428f4882d073b6dfbb474, type: 3}
       propertyPath: m_Name
       value: Flower1Orange
@@ -1142,14 +1126,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 499263183188130971, guid: 6a4fac16ec5fd3b42992e3f0265f91c7, type: 3}
-      propertyPath: 'm_Materials.Array.data[0]'
-      value: 
-      objectReference: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
-    - target: {fileID: 2021189514194086518, guid: 6a4fac16ec5fd3b42992e3f0265f91c7, type: 3}
-      propertyPath: 'm_Materials.Array.data[0]'
-      value: 
-      objectReference: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
     - target: {fileID: 6310396212819792979, guid: 6a4fac16ec5fd3b42992e3f0265f91c7, type: 3}
       propertyPath: m_Name
       value: Flower1Red
