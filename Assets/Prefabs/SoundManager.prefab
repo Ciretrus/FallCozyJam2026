@@ -1,0 +1,95 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1638954785781765441
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8875314153956988750}
+  - component: {fileID: 8908748813340848432}
+  m_Layer: 0
+  m_Name: SoundManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8875314153956988750
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1638954785781765441}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -14.7778, y: 4.8011, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8908748813340848432
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1638954785781765441}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab019a200366cf94c9097dfb5229df74, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SoundManager
+  ambienceEvent:
+    Guid:
+      Data1: -324604563
+      Data2: 1272783509
+      Data3: 1091016357
+      Data4: -969259520
+    Path: event:/SFX/Ambience/Ambience
+  plantEvent:
+    Guid:
+      Data1: 163986561
+      Data2: 1089022480
+      Data3: -2021048686
+      Data4: 1525507696
+    Path: event:/SFX/Gameplay Sound/Plant
+  pullingEvent:
+    Guid:
+      Data1: -1834171894
+      Data2: 1164699710
+      Data3: 840380581
+      Data4: -1797978200
+    Path: event:/SFX/Gameplay Sound/Pulling
+  waterEvent:
+    Guid:
+      Data1: 1305541955
+      Data2: 1262317447
+      Data3: 1896265635
+      Data4: 553181646
+    Path: event:/SFX/Gameplay Sound/Water
+  uiLooseEvent:
+    Guid:
+      Data1: -1654913783
+      Data2: 1306487938
+      Data3: -1774961509
+      Data4: -455215174
+    Path: event:/SFX/UI/Loose
+  uiButtonEvent:
+    Guid:
+      Data1: 1710303568
+      Data2: 1294699447
+      Data3: -813872496
+      Data4: 1984448374
+    Path: event:/SFX/UI/UI Button
+  victoryEvent:
+    Guid:
+      Data1: -981018859
+      Data2: 1273649623
+      Data3: 1557295514
+      Data4: -449947687
+    Path: event:/SFX/UI/Victory

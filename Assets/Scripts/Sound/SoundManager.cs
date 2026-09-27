@@ -14,9 +14,11 @@ public class SoundManager : MonoBehaviour
     [SerializeField] private EventReference uiButtonEvent;
     [SerializeField] private EventReference victoryEvent;
 
+    private FMOD.Studio.EventInstance ambienceInstance;
+
     private void Awake()
     {
-        if (Instance != null)
+        if (Instance != null && Instance != this)
         {
             Destroy(gameObject);
             return;
@@ -27,9 +29,29 @@ public class SoundManager : MonoBehaviour
 
     private void Start()
     {
-        if (!ambienceEvent.IsNull)
+        StartAmbience();
+    }
+
+    private void StartAmbience()
+    {
+        if (ambienceEvent.IsNull) return;
+
+        if (ambienceInstance.isValid())
         {
-            RuntimeManager.PlayOneShot(ambienceEvent);
+            ambienceInstance.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
+            ambienceInstance.release();
+        }
+
+        ambienceInstance = RuntimeManager.CreateInstance(ambienceEvent);
+        ambienceInstance.start();
+    }
+
+    private void OnDestroy()
+    {
+        if (ambienceInstance.isValid())
+        {
+            ambienceInstance.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
+            ambienceInstance.release();
         }
     }
 
