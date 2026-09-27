@@ -3,12 +3,11 @@ using UnityEngine;
 
 public class FlowerGrow : MonoBehaviour
 {
-
     [SerializeField] private Transform visualTransform;
     [SerializeField] private float growDuration = 1.5f;
 
-    [SerializeField] private float popOvershoot = 1.25f; 
-    [SerializeField] private float popDuration = 0.35f;  
+    [SerializeField] private float popOvershoot = 1.25f;
+    [SerializeField] private float popDuration = 0.35f;
 
     private Vector3 initialScale;
     private float currentProgress = 0f;
@@ -50,9 +49,24 @@ public class FlowerGrow : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Запускает рост цветка. Вызывается из FlowerWater при поливе.
+    /// </summary>
     public void StartGrowing()
     {
         if (isFullyGrown || isGrowing) return;
+
+        // Если рост почти завершён — сразу финализируем
+        if (currentProgress >= 0.95f)
+        {
+            isFullyGrown = true;
+            PlayBloomPopEffect();
+
+            if (SoundManager.Instance != null)
+                SoundManager.Instance.PlayPlantSound(transform.position);
+            return;
+        }
+
         isGrowing = true;
     }
 
@@ -75,5 +89,4 @@ public class FlowerGrow : MonoBehaviour
     {
         visualTransform.DOKill();
     }
-
 }
