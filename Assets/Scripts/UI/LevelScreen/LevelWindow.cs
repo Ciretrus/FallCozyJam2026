@@ -46,8 +46,6 @@ namespace UI.LevelScene
         {
             var root = _uiDocument.rootVisualElement;
 
-            _itemManager.InitializeDefaultItems();
-
             // Score
             _scoreText = root.Q<Label>("ScoreText");
             SetScoreView();

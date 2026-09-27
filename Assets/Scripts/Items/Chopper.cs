@@ -10,6 +10,6 @@ public class Chopper : Item
 
     public override void Buy()
     {
-        throw new NotImplementedException();
+        _bought = true;
     }
 }

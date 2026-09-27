@@ -8,15 +8,6 @@ public class ItemManager : MonoBehaviour
     private int ActiveItemId = 0;
     private MoneySaver moneySaver = new();
     
-    public void InitializeDefaultItems()
-    {
-        itemList.Add(new Hand());
-        itemList.Add(new WaterCan(5, 1, "The Unremarkable", 10));
-        itemList.Add(new WaterCan(10, 2, "The Eh One", 20));
-        itemList.Add(new WaterCan(15, 3, "The Good One", 30));
-        itemList.Add(new WaterCan(20, 4, "The Great One", 40));
-        itemList.Add(new WaterCan(35, 5, "The MAGNIFICENT", 50));
-    }
 
     public void BuyItem(int itemID)
     {
@@ -26,7 +17,7 @@ public class ItemManager : MonoBehaviour
         }
         var item = itemList[itemID];
 
-        if (!item.Bought && item.Rebuyable && moneySaver.Money < item.Cost)
+        if ((item.Bought && !item.Rebuyable) || moneySaver.Money < item.Cost)
         {
             int diff = item.Cost - moneySaver.Money;
             return;
