@@ -47,7 +47,7 @@ namespace UI.LevelScene
         {
             if (_uiDocument == null)
             {
-                Debug.LogError("[LevelWindow] _uiDocument не назначен в инспекторе!");
+                Debug.LogError("[LevelWindow] _uiDocument пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ!");
                 return;
             }
 
@@ -55,7 +55,7 @@ namespace UI.LevelScene
 
             _scoreText = root.Q<Label>("ScoreText");
             if (_scoreText == null)
-                Debug.LogError("[LevelWindow] Label 'ScoreText' не найден в UIDocument!");
+                Debug.LogError("[LevelWindow] Label 'ScoreText' пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ UIDocument!");
 
             if (_itemManager != null)
             {
@@ -67,7 +67,7 @@ namespace UI.LevelScene
             }
             else
             {
-                Debug.LogError("[LevelWindow] _itemManager не назначен в инспекторе!");
+                Debug.LogError("[LevelWindow] _itemManager пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ!");
             }
 
             SetScoreView();
@@ -149,8 +149,7 @@ namespace UI.LevelScene
 
         private void ExitToStartScreen()
         {
-            if (SceneTransition.Instance != null)
-                SceneTransition.Instance.LoadScene("StartScreen");
+            SceneManager.LoadScene("StartScreen");
         }
 
         private void UpdateTaskList(string a)

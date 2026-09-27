@@ -32,7 +32,7 @@ public class StartWindow : MonoBehaviour
 
     private void OnStartClicked()
     {
-        SceneTransition.Instance.LoadScene("FlowersTestScene");
+        SceneManager.LoadScene("FlowersScene");
     }
 
     private void OnSoundChanged(ChangeEvent<int> evt)
