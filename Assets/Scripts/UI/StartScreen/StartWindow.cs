@@ -17,8 +17,9 @@ public class StartWindow : MonoBehaviour
         var playBtn = root.Q<Button>("Play");
         if (playBtn != null)
         {
-            playBtn.clicked += OnStartClicked; 
-        } else
+            playBtn.clicked += OnStartClicked;
+                playBtn.clicked += () => SoundManager.Instance?.PlayUIButton();
+            } else
         {
             Debug.LogError("Button 'Play' not found.");
         }
