@@ -6,56 +6,56 @@ public class ItemManager : MonoBehaviour
     [SerializeReference, SubclassSelector]
     private List<Item> itemList = new();
     private int ActiveItemId = 0;
-    private MoneySaver moneySaver = new();
-    
+    [SerializeField] private MoneySaver moneySaver = new();
+
+    public event System.Action OnItemsChanged;
+
     public void InitializeDefaultItems()
     {
+        if (itemList.Count > 0) return;
+
         itemList.Add(new Hand());
-        itemList.Add(new WaterCan(5, 1, "The Unremarkable", 10));
-        itemList.Add(new WaterCan(10, 2, "The Eh One", 20));
-        itemList.Add(new WaterCan(15, 3, "The Good One", 30));
-        itemList.Add(new WaterCan(20, 4, "The Great One", 40));
-        itemList.Add(new WaterCan(35, 5, "The MAGNIFICENT", 50));
+        itemList.Add(new Chopper(15));
+        itemList.Add(new UpgradeRadius(1.5f, 100));
+        itemList.Add(new WaterCan(5, 1, "Basic", 300));
     }
 
     public void BuyItem(int itemID)
     {
-        if (itemID < 0 || itemID >= itemList.Count)
-        {
-            return;
-        }
+        if (itemID < 0 || itemID >= itemList.Count) return;
+
         var item = itemList[itemID];
 
-        if (!item.Bought && item.Rebuyable && moneySaver.Money < item.Cost)
+        if (!item.Bought && !moneySaver.CanAfford(item.Cost))
         {
-            int diff = item.Cost - moneySaver.Money;
+            Debug.Log($"[Shop] Недостаточно денег. Нужно {item.Cost}, есть {moneySaver.Money}");
             return;
         }
 
         if (!item.Bought || item.Rebuyable)
         {
-            moneySaver.DecreaseMoney(item.Cost); 
+            moneySaver.DecreaseMoney(item.Cost);
             item.Buy();
+            OnItemsChanged?.Invoke();
         }
+
         item.Activate();
         SetActiveItem(itemID);
     }
-    public List<Item> GetItemList()
-    {
-        return itemList;
-    }
 
-    public int GetBudget()
-    {
-        return moneySaver.Money;
-    }
+    public List<Item> GetItemList() => itemList;
+    public int GetBudget() => moneySaver.Money;
+    public MoneySaver GetMoneySaver() => moneySaver;
 
     public Item GetActiveItem()
     {
+        if (ActiveItemId < 0 || ActiveItemId >= itemList.Count) return null;
         return itemList[ActiveItemId];
     }
+
     public void SetActiveItem(int id)
     {
+        if (id < 0 || id >= itemList.Count) return;
         ActiveItemId = id;
     }
 }
