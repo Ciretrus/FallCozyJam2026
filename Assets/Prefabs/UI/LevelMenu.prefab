@@ -46,6 +46,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::UI.LevelScene.LevelWindow
   _uiDocument: {fileID: 630589701800617577}
   _shopItemTemplate: {fileID: 9197481963319205126, guid: f318283ced3eca34d8140a1f7363425e, type: 3}
+  _shopItemSpaceTemplate: {fileID: 9197481963319205126, guid: cc7e102f82898fa4785726f7fda33040, type: 3}
   _completedtasksTemplate: {fileID: 9197481963319205126, guid: bf9a49fdacee36043b34a033545194a2, type: 3}
   _tasksTemplate: {fileID: 9197481963319205126, guid: e6ed9757970a7c64fbe391a533c1f28a, type: 3}
 --- !u!1 &5730116752630776979
