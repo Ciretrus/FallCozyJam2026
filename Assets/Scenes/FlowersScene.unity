@@ -129,19 +129,19 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2210715308465682163, guid: e6e327f0802fdb34790d3d9a34aa9a2a, type: 3}
       propertyPath: m_Size.x
-      value: 76.019875
+      value: 49.593483
       objectReference: {fileID: 0}
     - target: {fileID: 2210715308465682163, guid: e6e327f0802fdb34790d3d9a34aa9a2a, type: 3}
       propertyPath: m_Size.y
-      value: 61.74543
+      value: 32.12661
       objectReference: {fileID: 0}
     - target: {fileID: 2210715308465682163, guid: e6e327f0802fdb34790d3d9a34aa9a2a, type: 3}
       propertyPath: m_Offset.x
-      value: 6.025921
+      value: 5.667118
       objectReference: {fileID: 0}
     - target: {fileID: 2210715308465682163, guid: e6e327f0802fdb34790d3d9a34aa9a2a, type: 3}
       propertyPath: m_Offset.y
-      value: -0.04291916
+      value: 0.65818024
       objectReference: {fileID: 0}
     - target: {fileID: 3047746764875367644, guid: e6e327f0802fdb34790d3d9a34aa9a2a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -191,13 +191,17 @@ PrefabInstance:
       propertyPath: m_ClearFlags
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 7704810985577675217, guid: e6e327f0802fdb34790d3d9a34aa9a2a, type: 3}
+      propertyPath: orthographic size
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 8804156030001245630, guid: e6e327f0802fdb34790d3d9a34aa9a2a, type: 3}
       propertyPath: m_Name
       value: CameraMovement
       objectReference: {fileID: 0}
     - target: {fileID: 9001351342963620839, guid: e6e327f0802fdb34790d3d9a34aa9a2a, type: 3}
       propertyPath: CameraZoom.maxSize
-      value: 50
+      value: 12
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 8426687628625897830, guid: e6e327f0802fdb34790d3d9a34aa9a2a, type: 3}

@@ -123,7 +123,7 @@ MonoBehaviour:
   Path: Assets/StreamingAssets/Music.bank
   Name: Music
   StudioPath: bank:/Music
-  lastModified: 639261267001612294
+  lastModified: 639261009980000000
   FileSizes: []
   Exists: 1
 --- !u!114 &-1973266124733473927
@@ -152,7 +152,7 @@ MonoBehaviour:
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
-  Length: 500
+  Length: 247
 --- !u!114 &-1449865224697425589
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -168,7 +168,7 @@ MonoBehaviour:
   Path: Assets/StreamingAssets/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 639261267001602254
+  lastModified: 639261009960000000
   FileSizes: []
   Exists: 1
 --- !u!114 &-489294760633428975
@@ -270,13 +270,15 @@ MonoBehaviour:
   - {fileID: -1973266124733473927}
   - {fileID: -7480111894394407155}
   - {fileID: 4060222077438831851}
+  - {fileID: 6732905592678932743}
+  - {fileID: 5209279252318227534}
   EditorParameters: []
   MasterBanks:
   - {fileID: -1449865224697425589}
   StringsBanks:
   - {fileID: 4755888853982132991}
   cacheVersion: 131860
-  cacheTime: 639261267001893245
+  cacheTime: 639261009980000000
   SerializableEventsDict:
   - key: event:/SFX/UI/Loose
     index: 0
@@ -292,6 +294,10 @@ MonoBehaviour:
     index: 5
   - key: event:/SFX/Gameplay Sound/Plant
     index: 6
+  - key: event:/Music/Music
+    index: 7
+  - key: event:/SFX/UI/Buy New Object
+    index: 8
 --- !u!114 &523319454544985733
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -307,7 +313,7 @@ MonoBehaviour:
   Path: Assets/StreamingAssets/SFX.bank
   Name: SFX
   StudioPath: bank:/SFX
-  lastModified: 639261267001893245
+  lastModified: 639261009960000000
   FileSizes: []
   Exists: 1
 --- !u!114 &772398207088062988
@@ -336,7 +342,7 @@ MonoBehaviour:
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
-  Length: 3733
+  Length: 3435
 --- !u!114 &1217309122205552179
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -381,7 +387,7 @@ MonoBehaviour:
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
-  Length: 1000
+  Length: 1250
 --- !u!114 &4545392401457067822
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -426,7 +432,7 @@ MonoBehaviour:
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
-  Length: 933
+  Length: 600
 --- !u!114 &4755888853982132991
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -442,10 +448,10 @@ MonoBehaviour:
   Path: Assets/StreamingAssets/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 639261267001612294
+  lastModified: 639261009960000000
   FileSizes:
   - Name: 
-    Value: 1164
+    Value: 1314
   Exists: 1
 --- !u!114 &5141499085429800115
 MonoBehaviour:
@@ -474,6 +480,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 933
+--- !u!114 &5209279252318227534
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/UI/Buy New Object
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/SFX/UI/Buy New Object
+  Guid:
+    Data1: 669994478
+    Data2: 1093397631
+    Data3: 44414649
+    Data4: -661145932
+  Banks:
+  - {fileID: 523319454544985733}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 1300
 --- !u!114 &6014247077967086047
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -492,6 +525,58 @@ MonoBehaviour:
   lastModified: 639260395660000000
   FileSizes: []
   Exists: 1
+--- !u!114 &6288356683177323432
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Music/GameState
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorParamRef
+  Name: GameState
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 2469094994
+    data2: 3203770758
+  Type: 1
+  IsGlobal: 0
+  Labels: []
+  Exists: 1
+--- !u!114 &6732905592678932743
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Music/Music
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/Music/Music
+  Guid:
+    Data1: 1265342663
+    Data2: 1196054284
+    Data3: -623326580
+    Data4: -1094842755
+  Banks:
+  - {fileID: -4093645306331839425}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 0
+  Parameters:
+  - {fileID: 6288356683177323432}
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 232000
 --- !u!114 &8374509253443619615
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -545,7 +630,7 @@ MonoBehaviour:
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
-  Length: 4000
+  Length: 3238
 --- !u!114 &8635231401701888863
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -572,4 +657,4 @@ MonoBehaviour:
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
-  Length: 650
+  Length: 450

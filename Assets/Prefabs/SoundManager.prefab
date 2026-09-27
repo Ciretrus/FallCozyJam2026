@@ -93,3 +93,10 @@ MonoBehaviour:
       Data3: 1557295514
       Data4: -449947687
     Path: event:/SFX/UI/Victory
+  musicEvent:
+    Guid:
+      Data1: 1265342663
+      Data2: 1196054284
+      Data3: -623326580
+      Data4: -1094842755
+    Path: event:/Music/Music
