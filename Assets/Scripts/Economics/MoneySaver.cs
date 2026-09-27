@@ -1,17 +1,27 @@
 ﻿using System;
+using UnityEngine;
 
 [Serializable]
 public class MoneySaver
 {
-    public int Money { get; private set; } = 10;
+    [SerializeField] private int _money = 10;
+    public int Money => _money;
 
-    public void IncreaseMoney(int i)
+    public event Action<int> OnMoneyChanged;
+
+    public void IncreaseMoney(int amount)
     {
-        Money += i;
+        if (amount <= 0) return;
+        _money += amount;
+        OnMoneyChanged?.Invoke(_money);
     }
 
-    public void DecreaseMoney(int i)
+    public void DecreaseMoney(int amount)
     {
-        Money -= i;
+        if (amount <= 0) return;
+        _money = Mathf.Max(0, _money - amount);
+        OnMoneyChanged?.Invoke(_money);
     }
+
+    public bool CanAfford(int cost) => _money >= cost;
 }

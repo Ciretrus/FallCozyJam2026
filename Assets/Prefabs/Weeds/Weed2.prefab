@@ -58,7 +58,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -162,6 +162,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56028128eb1979d4eb504e1f75318f25, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Weed
+  weedType: 0
+  commonReward: 5
+  largeReward: 10
   visualTransform: {fileID: 7369944999063073165}
   root: {fileID: 6660989121505955449}
   rb: {fileID: 8888192440004356945}
@@ -311,7 +314,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

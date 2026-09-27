@@ -677,11 +677,6 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 944841166}
   m_SourcePrefab: {fileID: 100100000, guid: e6e327f0802fdb34790d3d9a34aa9a2a, type: 3}
---- !u!20 &266319214 stripped
-Camera:
-  m_CorrespondingSourceObject: {fileID: 7704810985577675217, guid: e6e327f0802fdb34790d3d9a34aa9a2a, type: 3}
-  m_PrefabInstance: {fileID: 266319213}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &334079710
 GameObject:
   m_ObjectHideFlags: 0
@@ -5798,7 +5793,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -6739,6 +6734,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56028128eb1979d4eb504e1f75318f25, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Weed
+  weedType: 0
+  commonReward: 5
+  largeReward: 10
   visualTransform: {fileID: 1657998751}
   root: {fileID: 2016835671}
   rb: {fileID: 1657998749}
@@ -6989,7 +6987,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 493093650acd4384d824a415863a61ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::WeedTaker
-  "\u0441amera": {fileID: 266319214}
+  camera: {fileID: 0}
   grabRadius: 1
   weedLayer:
     serializedVersion: 2

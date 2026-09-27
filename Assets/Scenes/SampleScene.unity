@@ -377,10 +377,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f487a733a2550734da7fb1ffd2944fe8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ItemManager
-  itemList: []
+  itemList:
+  - rid: -2
+  moneySaver:
+    _money: 10
   references:
     version: 2
-    RefIds: []
+    RefIds:
+    - rid: -2
+      type: {class: , ns: , asm: }
 --- !u!4 &1820557503
 Transform:
   m_ObjectHideFlags: 0
