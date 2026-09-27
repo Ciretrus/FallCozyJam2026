@@ -18,6 +18,8 @@ public class WeedCollector : MonoBehaviour
 
     private void Update()
     {
+        if (targetCamera == null) return;
+
         float bottomY = targetCamera.transform.position.y - targetCamera.orthographicSize + yOffset;
 
         float targetX = transform.position.x;

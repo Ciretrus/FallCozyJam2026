@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class WeedTaker : MonoBehaviour
 {
-    [SerializeField] private Camera camera;
+    [SerializeField] private new Camera camera;
     public float grabRadius = 1.5f;
     [SerializeField] private LayerMask weedLayer;
     [SerializeField] private Transform cursor;
@@ -13,7 +13,6 @@ public class WeedTaker : MonoBehaviour
     private Vector3 startGrabPos;
     private bool isPulling;
 
-
     private void Awake()
     {
         if (camera == null)
@@ -21,17 +20,14 @@ public class WeedTaker : MonoBehaviour
         Physics2D.queriesHitTriggers = true;
     }
 
-    void Start()
-    {
-        
-    }
-
     void Update()
     {
+        if (camera == null) return;
+
         Vector3 mouseWorldPos = GetMouseWorldPosition();
         mouseWorldPos.z = 0;
         transform.position = mouseWorldPos;
-        
+
         if (Input.GetMouseButtonDown(0))
         {
             startGrabPos = mouseWorldPos;
@@ -74,9 +70,10 @@ public class WeedTaker : MonoBehaviour
         }
     }
 
-
     private Vector3 GetMouseWorldPosition()
     {
+        if (camera == null) return Vector3.zero;
+
         Ray ray = camera.ScreenPointToRay(Input.mousePosition);
         Plane groundPlane = new Plane(Vector3.forward, Vector3.zero);
 
@@ -93,7 +90,8 @@ public class WeedTaker : MonoBehaviour
     public float ChangeSize(float addSize)
     {
         grabRadius += addSize;
-        cursor.localScale = Vector3.one * grabRadius/2;
+        if (cursor != null)
+            cursor.localScale = Vector3.one * grabRadius / 2;
         return grabRadius;
     }
 
@@ -102,5 +100,4 @@ public class WeedTaker : MonoBehaviour
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, grabRadius);
     }
-
 }

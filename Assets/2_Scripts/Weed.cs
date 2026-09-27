@@ -41,13 +41,15 @@ public class Weed : MonoBehaviour
 
     private void Awake()
     {
+        if (visualTransform == null) visualTransform = transform;
+
         initialVisualPos = visualTransform.localPosition;
         initialVisualScale = visualTransform.localScale;
 
         float baseToughness = weedType == WeedType.Large ? 1.3f : 1.0f;
         personalToughness = Random.Range(0.85f, 1.3f) * baseToughness;
 
-        root.SetActive(false);
+        if (root != null) root.SetActive(false);
         if (rb != null) rb.bodyType = RigidbodyType2D.Static;
         collider = GetComponent<Collider2D>();
     }
@@ -59,7 +61,7 @@ public class Weed : MonoBehaviour
         startMousePos = mouseStart;
         currentHand = hand;
         visualTransform.DOKill();
-        root.SetActive(false);
+        if (root != null) root.SetActive(false);
     }
 
     public void OnMouseUpdate(Vector3 currentMousePos)
@@ -96,10 +98,11 @@ public class Weed : MonoBehaviour
     {
         IsPlucked = true;
         visualTransform.DOKill();
-        root.SetActive(true);
+        if (root != null) root.SetActive(true);
         needFollowHand = true;
 
-        Vector2 randomOffset = Random.insideUnitCircle * currentHand.grabRadius;
+        float radius = currentHand != null ? currentHand.grabRadius : 1f;
+        Vector2 randomOffset = Random.insideUnitCircle * radius;
         handOffset = new Vector3(randomOffset.x, randomOffset.y, 0f);
 
         Vector3 popUpOffset = initialVisualPos + new Vector3(Random.Range(-pluckPower, pluckPower), 0.6f, 0f);
@@ -123,23 +126,22 @@ public class Weed : MonoBehaviour
             Sequence bounceBack = DOTween.Sequence();
             bounceBack.Append(visualTransform.DOLocalMove(initialVisualPos, 0.25f).SetEase(Ease.OutBounce));
             bounceBack.Join(visualTransform.DOScale(initialVisualScale, 0.25f).SetEase(Ease.OutBounce));
-            bounceBack.OnComplete(() => root.SetActive(false));
+            if (root != null)
+                bounceBack.OnComplete(() => root.SetActive(false));
         }
         else
         {
-            collider.isTrigger = true;
-            visualTransform.SetParent(null);
+            if (collider != null) collider.isTrigger = true;
 
             if (rb != null)
             {
-                rb.transform.position = visualTransform.position;
                 rb.bodyType = RigidbodyType2D.Dynamic;
                 rb.linearVelocity = new Vector2(Random.Range(-1.5f, 1.5f), Random.Range(1f, 3f));
                 rb.angularVelocity = Random.Range(-180f, 180f);
             }
             else
             {
-                visualTransform.DOMoveY(visualTransform.position.y - 10f, 1.2f).SetEase(Ease.InQuad);
+                transform.DOMoveY(transform.position.y - 10f, 1.2f).SetEase(Ease.InQuad);
             }
         }
     }

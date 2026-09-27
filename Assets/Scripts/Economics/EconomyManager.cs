@@ -8,7 +8,7 @@ public class EconomyManager : MonoBehaviour
 
     private MoneySaver moneySaver;
 
-    private void Start()
+    private void Awake()
     {
         if (itemManager != null)
             moneySaver = itemManager.GetMoneySaver();
@@ -30,12 +30,12 @@ public class EconomyManager : MonoBehaviour
     {
         if (moneySaver == null)
         {
-            Debug.LogWarning("[Economy] MoneySaver не найден!");
             return;
         }
 
+        if (weed == null) return;
+
         int reward = weed.Reward;
         moneySaver.IncreaseMoney(reward);
-        Debug.Log($"[Economy] +{reward} за {weed.Type} сорняк. Всего: {moneySaver.Money}");
     }
 }

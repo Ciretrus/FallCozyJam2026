@@ -7,7 +7,6 @@ public class ItemManager : MonoBehaviour
     private List<Item> itemList = new();
     private int ActiveItemId = 0;
     private MoneySaver moneySaver = new();
-    
 
     public void BuyItem(int itemID)
     {
@@ -25,12 +24,13 @@ public class ItemManager : MonoBehaviour
 
         if (!item.Bought || item.Rebuyable)
         {
-            moneySaver.DecreaseMoney(item.Cost); 
+            moneySaver.DecreaseMoney(item.Cost);
             item.Buy();
         }
         item.Activate();
         SetActiveItem(itemID);
     }
+
     public List<Item> GetItemList()
     {
         return itemList;
@@ -45,8 +45,14 @@ public class ItemManager : MonoBehaviour
     {
         return itemList[ActiveItemId];
     }
+
     public void SetActiveItem(int id)
     {
         ActiveItemId = id;
+    }
+
+    public MoneySaver GetMoneySaver()
+    {
+        return moneySaver;
     }
 }
