@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class WeedTaker : MonoBehaviour
 {
-    [SerializeField] private Camera сamera;
+    [SerializeField] private Camera camera;
     public float grabRadius = 1.5f;
     [SerializeField] private LayerMask weedLayer;
 
@@ -16,8 +16,8 @@ public class WeedTaker : MonoBehaviour
 
     private void Awake()
     {
-        if (сamera == null)
-            сamera = Camera.main;
+        if (camera == null)
+            camera = Camera.main;
         Physics2D.queriesHitTriggers = true;
     }
 
@@ -34,13 +34,13 @@ public class WeedTaker : MonoBehaviour
         
         if (Input.GetMouseButtonDown(0))
         {
-            Debug.Log($"[WeedTaker] Клик в точке: {mouseWorldPos}");
+            Debug.Log($"[WeedTaker] пїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅ: {mouseWorldPos}");
             startGrabPos = mouseWorldPos;
             isPulling = true;
             activeWeeds.Clear();
 
             int count = Physics2D.OverlapCircleNonAlloc(mouseWorldPos, grabRadius, hitColliders, weedLayer);
-            Debug.Log($"[WeedTaker] Найдено объектов в радиусе: {count}");
+            Debug.Log($"[WeedTaker] пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ: {count}");
             for (int i = 0; i < count; i++)
             {
                 if (hitColliders[i].TryGetComponent<Weed>(out var weed) && !weed.IsPlucked)
@@ -51,7 +51,7 @@ public class WeedTaker : MonoBehaviour
             }
         }
 
-        // 2. Тянем — пушим актуальные координаты мыши в захваченные кусты
+        // 2. пїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
         if (isPulling && Input.GetMouseButton(0))
         {
             for (int i = 0; i < activeWeeds.Count; i++)
@@ -63,7 +63,7 @@ public class WeedTaker : MonoBehaviour
             }
         }
 
-        // 3. Отпустили — говорим всем сорнякам (и натянутым, и уже вырванным в руке) отпуститься
+        // 3. пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ (пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅ) пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
         if (isPulling && Input.GetMouseButtonUp(0))
         {
             isPulling = false;
@@ -81,14 +81,14 @@ public class WeedTaker : MonoBehaviour
 
     private Vector3 GetMouseWorldPosition()
     {
-        // Пускаем луч из камеры через экранную точку курсора прямо в плоскость Z = 0
-        Ray ray = сamera.ScreenPointToRay(Input.mousePosition);
-        Plane groundPlane = new Plane(Vector3.forward, Vector3.zero); // Плоскость XY на Z = 0
+        // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ Z = 0
+        Ray ray = camera.ScreenPointToRay(Input.mousePosition);
+        Plane groundPlane = new Plane(Vector3.forward, Vector3.zero); // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ XY пїЅпїЅ Z = 0
 
         if (groundPlane.Raycast(ray, out float distance))
         {
             Vector3 worldPoint = ray.GetPoint(distance);
-            worldPoint.z = 0f; // Железный фикс Z
+            worldPoint.z = 0f; // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ Z
             return worldPoint;
         }
 
@@ -97,7 +97,7 @@ public class WeedTaker : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-        // Рисует сферу там, где ФИЗИКА реально ищет сорняки
+        // пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ, пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, grabRadius);
     }

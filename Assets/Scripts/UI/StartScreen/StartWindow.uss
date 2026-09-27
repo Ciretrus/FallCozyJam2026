@@ -1,0 +1,104 @@
+:root {
+    -unity-font-definition: url("project://database/Assets/Resources/Fonts/ComicRelief.ttf");
+    color: #905D41;
+}
+
+.custom-label {
+    font-size: 20px;
+    -unity-font-style: bold;
+    color: rgb(68, 138, 255);
+}
+
+.start-button {
+    font-size: 84px;
+    background-color: transparent;
+    color: #905D41;
+    padding: 40px;
+
+    height: 151px;
+
+    border-width: 7px;
+    border-color: #905D41;
+    border-radius: 20px;
+}
+
+.start-button:hover {
+    background-color: #ffdda9;
+    scale: 1.05 1.05;
+}
+
+.start-button:active {
+    background-color: #cfaa8c;
+    scale: 0.95 0.95;
+}
+
+/* ===== Slider root ===== */
+/* .unity-slider {
+    margin: 8px 0;
+    min-height: 20px;
+    flex-grow: 1;
+} */
+
+.slider-label {
+    color: #662020;
+    font-size: 48px;
+
+    padding-top: 0px;
+    padding-right: 2px;
+    padding-bottom: 0px;
+    padding-left: 2px;
+
+    margin-top: 2px;
+    margin-right: 2px;
+    margin-bottom: 2px;
+    margin-left: 2px;
+
+}
+
+/* ===== Track (the groove) ===== */
+.unity-base-slider__tracker {
+    height: 14px;
+    background-color: #BC8E74;
+
+    border-width: 0;
+    border-color: #BC8E74;
+    border-radius: 7px;
+
+    align-self: center;
+    justify-content: center;
+}
+
+/* ===== Dragger (the handle) ===== */
+.unity-base-slider__dragger {
+    width: 28px;
+    height: 28px;
+    background-color: #905D41;
+
+    border-width: 0;
+    border-color: #905D41;
+    border-radius: 14px;
+
+    transition-property: background-color, scale;
+    transition-duration: 0.1s;
+}
+
+.unity-base-slider__dragger:hover {
+    scale: 1.1 1.1;
+}
+
+.unity-base-slider__dragger:active {
+    scale: 0.9 0.9;
+}
+
+/* ===== Fill ===== */
+.unity-base-slider__fill {
+    height: 14px;
+    background-color: #905D41;
+
+    border-width: 0;
+    border-color: #905D41;
+    border-radius: 7px;
+
+    align-self: center;
+    justify-content: center;
+}
