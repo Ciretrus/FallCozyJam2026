@@ -24,10 +24,9 @@ public class ItemManager : MonoBehaviour
         {
             return;
         }
-
         var item = itemList[itemID];
 
-        if (moneySaver.Money < item.Cost)
+        if (!item.Bought && item.Rebuyable && moneySaver.Money < item.Cost)
         {
             int diff = item.Cost - moneySaver.Money;
             return;

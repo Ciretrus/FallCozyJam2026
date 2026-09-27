@@ -1,5 +1,6 @@
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
 
 namespace UI.StartScene {
@@ -31,7 +32,7 @@ public class StartWindow : MonoBehaviour
 
     private void OnStartClicked()
     {
-        //Debug.Log("STARTED");
+        SceneTransition.Instance.LoadScene("FlowersTestScene");
     }
 
     private void OnSoundChanged(ChangeEvent<int> evt)

@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.U2D;
 using UnityEngine.UIElements;
 
@@ -98,7 +99,7 @@ namespace UI.LevelScene
         }
         private void ExitToStartScreen()
         {
-            Debug.Log($"EXIT");
+            SceneTransition.Instance.LoadScene("StartScreen");
         }
 
         private void UpdateTaskList(string a)
