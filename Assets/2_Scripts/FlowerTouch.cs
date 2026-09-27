@@ -4,7 +4,7 @@ using UnityEngine;
 public class FlowerTouch : MonoBehaviour
 {
     [Header("Настройки зоны касания")]
-    [SerializeField] private float touchRadius = 1.6f;
+    public float touchRadius = 1.6f;
     [SerializeField] private LayerMask flowerLayer;
 
     [Header("Камера")]
