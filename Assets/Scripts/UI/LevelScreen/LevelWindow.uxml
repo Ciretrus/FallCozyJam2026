@@ -37,6 +37,6 @@
                 <ui:Button text="HELP ?" name="HelpButton" style="color: rgb(255, 241, 219); background-color: rgba(255, 241, 219, 0.43); position: absolute; right: 0%; bottom: 0%; margin-bottom: 0; align-self: flex-end; justify-content: space-around; align-content: flex-start; flex-direction: column-reverse; font-size: 46px; border-top-left-radius: 24px; border-top-right-radius: 24px; border-bottom-right-radius: 24px; border-bottom-left-radius: 24px; min-width: auto; padding-right: 24px; padding-left: 24px; padding-top: 6px; padding-bottom: 12px;" />
             </ui:VisualElement>
         </ui:VisualElement>
-        <ui:Instance template="HelpPopup" name="HelpPopup" style="position: absolute; top: 0; right: 0; bottom: 0; left: 0;" />
+        <ui:Instance template="HelpPopup" name="HelpPopup" style="position: absolute; top: 0; right: 0; bottom: 0; left: 0; display: none;" />
     </ui:VisualElement>
 </ui:UXML>

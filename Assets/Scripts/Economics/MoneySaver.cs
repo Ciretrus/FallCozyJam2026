@@ -3,7 +3,7 @@
 [Serializable]
 public class MoneySaver
 {
-    public int Money { get; private set; } = 0;
+    public int Money { get; private set; } = 10;
 
     public void IncreaseMoney(int i)
     {

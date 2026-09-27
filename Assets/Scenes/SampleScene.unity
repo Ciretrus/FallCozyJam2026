@@ -128,6 +128,14 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 5275520240833583940, guid: 813d2bda4a1b94f42843b4b13ff58073, type: 3}
+      propertyPath: _itemManager
+      value: 
+      objectReference: {fileID: 1820557502}
+    - target: {fileID: 5275520240833583940, guid: 813d2bda4a1b94f42843b4b13ff58073, type: 3}
+      propertyPath: watercanAtlas
+      value: 
+      objectReference: {fileID: 100100200, guid: eff26c77eb196d34da36ee44ef2ab1bf, type: 3}
+    - target: {fileID: 5275520240833583940, guid: 813d2bda4a1b94f42843b4b13ff58073, type: 3}
       propertyPath: _shopItemSpaceTemplate
       value: 
       objectReference: {fileID: 9197481963319205126, guid: cc7e102f82898fa4785726f7fda33040, type: 3}
@@ -340,10 +348,59 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1820557501
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1820557503}
+  - component: {fileID: 1820557502}
+  m_Layer: 0
+  m_Name: ItemManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1820557502
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1820557501}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f487a733a2550734da7fb1ffd2944fe8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ItemManager
+  itemList: []
+  references:
+    version: 2
+    RefIds: []
+--- !u!4 &1820557503
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1820557501}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 5.66964, y: -0.65143, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 1734612006}
   - {fileID: 1135186203}
+  - {fileID: 1820557503}
   - {fileID: 607245883}

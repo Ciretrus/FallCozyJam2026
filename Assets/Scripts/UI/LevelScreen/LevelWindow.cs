@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.U2D;
 using UnityEngine.UIElements;
 
 namespace UI.LevelScene
@@ -7,6 +8,7 @@ namespace UI.LevelScene
     public class LevelWindow : MonoBehaviour
     {
         [SerializeField] private UIDocument _uiDocument;
+        public ItemManager _itemManager;
 
         private class ShopItemData
         {
@@ -37,13 +39,17 @@ namespace UI.LevelScene
 
         private Button _exitBtn;
 
+        [SerializeField] private SpriteAtlas watercanAtlas;
+
         private void OnEnable()
         {
             var root = _uiDocument.rootVisualElement;
 
+            _itemManager.InitializeDefaultItems();
+
             // Score
             _scoreText = root.Q<Label>("ScoreText");
-            SetScoreView(0);
+            SetScoreView();
 
             // Help popup
             _helpPopup = root.Q<VisualElement>("HelpPopup");
@@ -73,8 +79,9 @@ namespace UI.LevelScene
         //     if (_closeHelpBtn != null) _closeHelpBtn.clicked -= HideHelp;
         //     if (_exitBtn != null) _exitBtn.clicked -= ExitToStartScreen;
         // }
-        private void SetScoreView(int value)
+        private void SetScoreView()
         {
+            int value = _itemManager.GetBudget();
             _scoreText.text = value.ToString();
         }
 
@@ -99,11 +106,16 @@ namespace UI.LevelScene
             _tasks.Clear();
             var items = new List<TaskData>
             {
-                new() { Text = "sword",  Completed = true },
-                new() { Text = "shield", Completed = true  },
-                new() { Text = "potion", Completed = false  },
-                new() { Text = "bow",    Completed = false  },
-                new() { Text = "staff",  Completed = true },
+                new() { Text = "Pull out all the weeds", Completed = false },
+                new() { Text = "Pull out a weed", Completed = false },
+                new() { Text = "Water the flower", Completed = false },
+                new() { Text = "Pull out a weed", Completed = false },
+                new() { Text = "Grow more flowers, you can't water a flower while there are weeds nearby", Completed = false },
+                new() { Text = "Buy a hoe", Completed = false },
+                new() { Text = "Pull it out", Completed = false },
+                new() { Text = "Use the hand trowel", Completed = false },
+                new() { Text = "Use the hoe", Completed = false },
+                new() { Text = "Keep pulling out weeds and watering the flowers until a picture appears", Completed = false },
             };
             foreach (var data in items)
             {
@@ -114,20 +126,14 @@ namespace UI.LevelScene
         private void UpdateShopList(string a)
         {
             _shopContent.Clear();
-            var items = new List<ShopItemData>
-            {
-                new() { Id = "sword",  Price = 100 },
-                new() { Id = "shield", Price = 50  },
-                new() { Id = "potion", Price = 25  },
-                new() { Id = "bow",    Price = 75  },
-                new() { Id = "staff",  Price = 120 },
-            };
+            var items = _itemManager.GetItemList();
+            Debug.Log(items.Count);
             for (int i = 0; i < items.Count - 1; ++i)
             {
-                _shopContent.Add(CreateShopItem(items[i]));
+                _shopContent.Add(CreateShopItem(items[i], i));
                 _shopContent.Add(_shopItemSpaceTemplate.Instantiate());
             }
-            _shopContent.Add(CreateShopItem(items[^1]));
+            _shopContent.Add(CreateShopItem(items[^1], items.Count - 1));
         }
 
         private VisualElement CreateTask(TaskData data)
@@ -151,40 +157,63 @@ namespace UI.LevelScene
             return item;
         }
 
-        private VisualElement CreateShopItem(ShopItemData data)
+        private VisualElement CreateShopItem(Item data, int id)
         {
             var item = _shopItemTemplate.Instantiate();
-            item.name = data.Id; // ShopCost
+            item.name = id.ToString(); // ShopCost
 
             var cost = item.Q<Button>("ShopCost");
             if (cost != null)
             {
-                cost.text = data.Price.ToString();
-                cost.clicked += () => BuyView(data.Id);
+                if (!data.Bought)
+                {
+                    cost.text = data.Cost.ToString();
+                }
+                else
+                {
+                    cost.text = "USE";
+                    var color = cost.style.backgroundColor.value;
+                    color.a = 0.5f;
+                    cost.style.backgroundColor = color;
+                }
+                cost.clicked += () => BuyView(id);
             }
 
             var view = item.Q<VisualElement>("ShopView");
             if (view != null)
             {
-                var sprite = LoadSprite(data.Id);
+                var sprite = GetSprite(data);
                 if (sprite != null)
                 {
                     view.style.backgroundImage = new StyleBackground(sprite);
-                    view.style.unityBackgroundScaleMode = ScaleMode.ScaleToFit;
+                    view.style.backgroundSize = new BackgroundSize(BackgroundSizeType.Contain);
+                }
+                else
+                {
+                    var color = new Color(92f / 255f, 113f / 255f, 84f / 255f)
+                    {
+                        a = 0.5f
+                    };
+                    view.style.backgroundColor = color;
                 }
             }
 
             return item;
         }
-
-        private Sprite LoadSprite(string id)
+        private Sprite GetSprite(Item data)
         {
-            return Resources.Load<Sprite>($"UI/Items/{id}"); // Resources\UI\Items
+            if (data.GetType() == typeof(WaterCan))
+            {
+                return watercanAtlas.GetSprite(data.Name.Replace(" ", ""));
+            }
+            return Resources.Load<Sprite>($"UI/Items/{name}");
         }
 
-        private void BuyView(string itemId)
+        private void BuyView(int itemId)
         {
-            Debug.Log($"Покупка: {itemId}");
+            _itemManager.BuyItem(itemId);
+            UpdateShopList("");
+            SetScoreView();
         }
     }
 

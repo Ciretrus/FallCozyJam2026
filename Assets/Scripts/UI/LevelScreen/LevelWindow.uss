@@ -142,3 +142,15 @@
 
     align-self: center;
 } 
+
+
+
+/* Hover — shared by every button */
+.unity-button:hover {
+    scale: 1.05;
+}
+
+/* Pressed — shared by every button */
+.unity-button:active {
+    scale: 0.95;
+}

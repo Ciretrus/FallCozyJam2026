@@ -5,6 +5,11 @@ public class Chopper : Item
 {
     public override void Activate()
     {
-        //Сюда код который активируется только при покупке
+        //пїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+    }
+
+    public override void Buy()
+    {
+        throw new NotImplementedException();
     }
 }
