@@ -6,7 +6,7 @@ public class WeedTaker : MonoBehaviour
     [SerializeField] private Camera camera;
     public float grabRadius = 1.5f;
     [SerializeField] private LayerMask weedLayer;
-
+    [SerializeField] private Transform cursor;
 
     private Collider2D[] hitColliders = new Collider2D[64];
     private readonly List<Weed> activeWeeds = new List<Weed>();
@@ -34,13 +34,11 @@ public class WeedTaker : MonoBehaviour
         
         if (Input.GetMouseButtonDown(0))
         {
-            Debug.Log($"[WeedTaker] ���� � �����: {mouseWorldPos}");
             startGrabPos = mouseWorldPos;
             isPulling = true;
             activeWeeds.Clear();
 
             int count = Physics2D.OverlapCircleNonAlloc(mouseWorldPos, grabRadius, hitColliders, weedLayer);
-            Debug.Log($"[WeedTaker] ������� �������� � �������: {count}");
             for (int i = 0; i < count; i++)
             {
                 if (hitColliders[i].TryGetComponent<Weed>(out var weed) && !weed.IsPlucked)
@@ -51,7 +49,6 @@ public class WeedTaker : MonoBehaviour
             }
         }
 
-        // 2. ����� � ����� ���������� ���������� ���� � ����������� �����
         if (isPulling && Input.GetMouseButton(0))
         {
             for (int i = 0; i < activeWeeds.Count; i++)
@@ -63,7 +60,6 @@ public class WeedTaker : MonoBehaviour
             }
         }
 
-        // 3. ��������� � ������� ���� �������� (� ���������, � ��� ��������� � ����) �����������
         if (isPulling && Input.GetMouseButtonUp(0))
         {
             isPulling = false;
@@ -81,23 +77,28 @@ public class WeedTaker : MonoBehaviour
 
     private Vector3 GetMouseWorldPosition()
     {
-        // ������� ��� �� ������ ����� �������� ����� ������� ����� � ��������� Z = 0
         Ray ray = camera.ScreenPointToRay(Input.mousePosition);
-        Plane groundPlane = new Plane(Vector3.forward, Vector3.zero); // ��������� XY �� Z = 0
+        Plane groundPlane = new Plane(Vector3.forward, Vector3.zero);
 
         if (groundPlane.Raycast(ray, out float distance))
         {
             Vector3 worldPoint = ray.GetPoint(distance);
-            worldPoint.z = 0f; // �������� ���� Z
+            worldPoint.z = 0f;
             return worldPoint;
         }
 
         return Vector3.zero;
     }
 
+    public float ChangeSize(float addSize)
+    {
+        grabRadius += addSize;
+        cursor.localScale = Vector3.one * grabRadius/2;
+        return grabRadius;
+    }
+
     private void OnDrawGizmos()
     {
-        // ������ ����� ���, ��� ������ ������� ���� �������
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, grabRadius);
     }

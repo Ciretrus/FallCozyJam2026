@@ -4,16 +4,15 @@ using UnityEngine;
 public class FlowerTouch : MonoBehaviour
 {
     [Header("Настройки зоны касания")]
-    [SerializeField] private float touchRadius = 1.6f;
+    public float touchRadius = 1.6f;
     [SerializeField] private LayerMask flowerLayer;
 
     [Header("Камера")]
     [SerializeField] private Camera targetCamera;
 
-    // Статический буфер для коллайдеров без выделения мусора в памяти
+
     private readonly Collider2D[] hitBuffer = new Collider2D[32];
 
-    // Хранилища для отслеживания входа/выхода из зоны
     private readonly HashSet<Flower> currentFrameFlowers = new HashSet<Flower>();
     private readonly HashSet<Flower> previousFrameFlowers = new HashSet<Flower>();
 
@@ -65,6 +64,12 @@ public class FlowerTouch : MonoBehaviour
                 leftFlower.ReleaseBend();
             }
         }
+    }
+
+    public float ChangeSize(float addSize)
+    {
+        touchRadius += addSize;
+        return touchRadius;
     }
 
     private Vector3 GetMouseWorldPosition()

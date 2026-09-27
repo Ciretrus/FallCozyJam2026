@@ -247,6 +247,7 @@ GameObject:
   - component: {fileID: 6850409016514913142}
   - component: {fileID: 9029701215276935840}
   - component: {fileID: 2840041494673475513}
+  - component: {fileID: 8038597338112558289}
   m_Layer: 6
   m_Name: Flower1Orange
   m_TagString: Untagged
@@ -348,3 +349,19 @@ SortingGroup:
   m_SortingLayer: 0
   m_SortingOrder: 100
   m_SortAtRoot: 1
+--- !u!114 &8038597338112558289
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9060658366768371270}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea370d8256fe16143a562c51a0980830, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FlowerGrow
+  visualTransform: {fileID: 6870473268843744084}
+  growDuration: 2
+  popOvershoot: 1.25
+  popDuration: 0.35
